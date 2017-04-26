@@ -5,7 +5,7 @@
 ** Login   <lorill_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 15:26:03 2017 LORILLARD jimmy
-** Last update Tue Apr 25 19:14:40 2017 LORILLARD jimmy
+** Last update Wed Apr 26 01:40:58 2017 LORILLARD jimmy
 */
 #include "../inc/jetpack_joyride.h"
 
@@ -31,16 +31,10 @@ void print_list(t_list *list)
 int main(void)
 {
   t_list *list;
-  t_pattern char_map;
 
-  char_map = rand() % 4 + 1;
-  my_put_nbr(char_map);
+  map_pattern();
   list = NULL;
-  list = add_link(list, "**********************************************\n");
-  list = add_link(list, "   l        x       x   m                  x l\n");
-  list = add_link(list, "      x                        m           x l\n");
-  list = add_link(list, "  x                 x          l     x       l\n");
-  list = add_link(list, "**********************************************\n");
+  list = add_link(list, " ");
   print_list(list);
   return (0);
 }
