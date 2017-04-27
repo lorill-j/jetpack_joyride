@@ -5,7 +5,7 @@
 ** Login   <lorill_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 15:08:49 2017 LORILLARD jimmy
-** Last update Wed Apr 26 01:42:46 2017 LORILLARD jimmy
+** Last update Wed Apr 26 19:17:50 2017 LORILLARD jimmy
 */
 
 #ifndef _JETPACK_JOYRIDE_H_
@@ -41,6 +41,10 @@ int	my_strlen(char *str);
 
 void	*xmalloc(int size);
 
-void	map_pattern();
+char	*map_pattern();
+
+void	map_border();
+
+void	map_display();
 
 #endif /* !_JETPACK_JOYRIDE_H_ */
