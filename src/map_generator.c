@@ -5,7 +5,7 @@
 ** Login   <lorill_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 15:26:03 2017 LORILLARD jimmy
-** Last update Thu Apr 27 01:01:11 2017 LORILLARD jimmy
+** Last update Thu Apr 27 01:19:20 2017 LORILLARD jimmy
 */
 #include "../inc/jetpack_joyride.h"
 
@@ -52,7 +52,19 @@ void	map_border()
     }
 }
 
-void	map_display()
+void	map_display(char **str)
+{
+  int	i;
+  
+  i = 0;
+  while (i != 3)
+    {
+      my_putstr(str[i]);
+      i++;
+    }
+}
+
+void	map_in_array()
 {
   int   i;
   char	**str;
@@ -60,16 +72,12 @@ void	map_display()
 
   i = 0;
   str = xmalloc(3 * sizeof(char *));
-  map_border();
-  my_putchar('\n');
   while (i != 3)
     {
       strcp = map_pattern(i);
-      my_putstr(strcp);
       str[i] = xmalloc(my_strlen(strcp) * sizeof(char) + 1);
       str[i] = strcp;
-      my_putchar('\n');
       i++;
     }
-  map_border();
+  map_display(str);
 }

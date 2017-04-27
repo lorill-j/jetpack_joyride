@@ -5,7 +5,7 @@
 ** Login   <lorill_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 15:26:03 2017 LORILLARD jimmy
-** Last update Wed Apr 26 19:08:55 2017 LORILLARD jimmy
+** Last update Thu Apr 27 01:19:36 2017 LORILLARD jimmy
 */
 #include "../inc/jetpack_joyride.h"
 
@@ -32,7 +32,7 @@ int		main(void)
 {
   t_list	*list;
 
-  map_display();
+  map_in_array();
   list = NULL;
   list = add_link(list, " ");
   print_list(list);
