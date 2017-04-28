@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <SDL/SDL.h>
 
 typedef struct s_list t_list;
 struct s_list {

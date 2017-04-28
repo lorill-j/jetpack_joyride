@@ -17,7 +17,7 @@ char	*map_pattern(int line)
 
   srand(time(NULL));
   j = 0;
-  str = xmalloc(j * sizeof(char) + 1);
+  str = xmalloc(100 * sizeof(char) + 1);
   while (j != 100)
     {
       if (line == 0)
@@ -57,11 +57,15 @@ void	map_display(char **str)
   int	i;
   
   i = 0;
+  map_border();
+  my_putchar('\n');
   while (i != 3)
     {
       my_putstr(str[i]);
+      my_putchar('\n');
       i++;
     }
+  map_border();
 }
 
 void	map_in_array()

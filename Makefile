@@ -18,9 +18,10 @@ SRC 		= src/lib/my_putchar.c \
 		src/map_generator.c \
 		src/jetpack_joyride.c
 
+
 OBJ			=	$(SRC:%.c=%.o)
 
-CC			=	gcc
+CC			=	gcc -LSDLmain -lSDL
 
 CFLAGS			=   	-Wall -Werror -Wpedantic
 
