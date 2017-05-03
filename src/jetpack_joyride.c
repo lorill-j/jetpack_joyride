@@ -31,37 +31,54 @@ void		print_list(t_list *list)
 int		main(void)
 {
   t_list	*list;
-  SDL_Surface *ecran = NULL;
-  SDL_Surface *imageDeFond = NULL;
-  SDL_Surface *zozor = NULL;
+
+
+  SDL_Surface *ecran = NULL, *zozor = NULL;
   SDL_Rect positionZozor;
-  SDL_Rect positionFond;
-  positionFond.x = 0;
-  positionFond.y = 0;
-  positionZozor.x = 500;
-  positionZozor.y = 260;
+  SDL_Event event;
+  int continuer = 1;
   
   SDL_Init(SDL_INIT_VIDEO);
-  ecran = SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+  
+  ecran = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   SDL_WM_SetCaption("Jetpack Joyride", NULL);
-
-  imageDeFond = SDL_LoadBMP("/home/jimmy/jetpack_joyride/trunk/img/lac_en_montagne.bmp");
-  SDL_BlitSurface(imageDeFond, NULL, ecran, &positionFond);
   
-  zozor = SDL_LoadBMP("/home/jimmy/jetpack_joyride/trunk/img/zozor.bmp");
+  zozor = SDL_LoadBMP("/home/jimmy/jetpack_joyride/trunk/img/sprite.bmp");
   SDL_SetColorKey(zozor, SDL_SRCCOLORKEY, SDL_MapRGB(zozor->format, 0, 0, 255));
-  SDL_SetAlpha(zozor, SDL_SRCALPHA, 255);
-  SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
-
-  SDL_Flip(ecran);
-  pause();
   
+  positionZozor.x = 0;
+  positionZozor.y = 240;
+  
+  SDL_EnableKeyRepeat(1, 1);
+  while (continuer)
+    {
+      SDL_WaitEvent(&event);
+      switch(event.type)
+	{
+	case SDL_QUIT:
+	  continuer = 0;
+	  break;
+	case SDL_KEYDOWN:
+	  switch(event.key.keysym.sym)
+	    {
+	    case SDLK_UP:
+	      positionZozor.y--;
+	      break;
+	    case SDLK_DOWN:
+	      positionZozor.y++;
+	      break;
+	    }
+	  break;
+	}
+      
+      SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
+      SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
+      SDL_Flip(ecran);
+    }
   map_in_array();
   list = NULL;
   list = add_link(list, " ");
   print_list(list);
-  
-  SDL_FreeSurface(imageDeFond);
   SDL_FreeSurface(zozor);
   SDL_Quit();
   return EXIT_SUCCESS;

@@ -23,8 +23,6 @@ OBJ			=	$(SRC:%.c=%.o)
 
 CC			=	gcc -LSDLmain -lSDL
 
-CFLAGS			=   	-Wall -Werror -Wpedantic
-
 RM			=	rm -f
 
 all:			$(NAME)
